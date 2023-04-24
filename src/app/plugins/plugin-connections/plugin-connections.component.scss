@@ -1,0 +1,100 @@
+.connection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    padding: 24px;
+    box-shadow: 0px 4px 12px rgb(0 0 0 / 10%) !important;
+    border-radius: 4px !important;
+}
+
+.connection-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.success-box {
+    background: rgba(102, 163, 103, 0.1);
+}
+
+.failure-box {
+    background: rgba(237, 113, 37, 0.1);
+}
+
+.connection-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+
+.connection-image {
+    display: flex;
+    flex: 1 1 0;
+    align-self: center;
+}
+
+.action-menu {
+    list-style: none;
+    font-family: "Ubuntu-Medium", sans-serif !important;
+    margin-left: 0 !important;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.action-menu-button {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #717176 !important;
+}
+
+.action-menu :hover, ::after {
+    text-decoration: none !important;
+}
+@media(max-width:575.98px) {
+    .connection-container {
+        gap: 7px;
+        padding: 7px;
+    }
+
+    .connection-box {
+        padding: 10px;
+    }
+
+    .connection-content {
+        margin-left: 0.5rem;
+    }
+
+    .connection-image {
+        display: flex;
+        flex: 1 1 0;
+        align-self: center;
+    }
+}
+
+@media(max-width:350px) {
+    .connection-container {
+        gap: 7px;
+        padding: 7px;
+    }
+
+    .connection-box {
+        padding: 8px;
+    }
+
+    .connection-content {
+        margin-left: 0.5rem;
+    }
+
+    .connection-image {
+        display: flex;
+        flex: 1 1 0;
+        align-self: center;
+    }
+}

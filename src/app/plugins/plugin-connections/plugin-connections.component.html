@@ -1,0 +1,32 @@
+<div *ngIf="connectionsList" class="connection-container flex-tile">
+    <h4>Connections</h4>
+    <div *ngFor="let connection of connectionsList" class="connection-box"
+        [attr.data-aid]="'connections'"
+        [id]="'connection-'+connection.id"
+        [ngClass]="connection.state === connectionSateEnum.ESTABLISHED ? 'success-box' : 'failure-box'">
+       <div class="d-flex flex-row">
+            <img alt="Paltform Icon" [src]="assetUrl+'assets/img/stores/'+connection.platformType+ (isMobile ? '-XS.svg' : '-SM.svg')"
+                [attr.alt]="connection.platformType"
+                class="connection-image">
+            <div class="connection-content">
+                <span>
+                    <label class="dark-secondary-text mr-2">
+                        {{ (connection.state === connectionSateEnum.ESTABLISHED ? 'established' : 'failed')  }}
+                    </label>
+                    <span *ngIf="connection.state === connectionSateEnum.ESTABLISHED">
+                        <img *ngIf="!isMobile" src="{{assetUrl}}assets/icons/status-icons/Checkmark.svg" alt="success-icon">
+                        <img *ngIf="isMobile" src="{{assetUrl}}assets/icons/status-icons/Checkmark-xs.svg" alt="success-icon">
+                    </span>
+                    <span *ngIf="connection.state === connectionSateEnum.ATTEMPTED">
+                        <img *ngIf="!isMobile" src="{{assetUrl}}assets/icons/status-icons/Alert.svg" alt="failure-icon">
+                        <img *ngIf="isMobile" src="{{assetUrl}}assets/icons/status-icons/Alert-xs.svg" alt="failure-icon">
+                    </span>
+                </span>
+                <span class="dark-secondary-text d-none d-lg-block d-xl-block d-md-block"> {{connection.shopId}}.{{platformDomainText[connection.platformType]}} </span>
+
+               
+
+            </div>
+       </div>
+    </div>
+</div>
