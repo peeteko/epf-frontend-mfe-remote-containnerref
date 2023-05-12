@@ -11,7 +11,7 @@ export class PluginService {
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  public getConnectionsList(jwtTokenValue : string ): Observable<Connection[]> {
+  public getConnectionsList(jwtTokenValue : string): Observable<Connection[]> {
     const authorizationValue = "Bearer ".concat(jwtTokenValue);
     return this.httpClient.get<Connection[]>(`${environment.endPointEpfAdapter}/connections`, { headers : this._getHeaders(authorizationValue)});   
   }

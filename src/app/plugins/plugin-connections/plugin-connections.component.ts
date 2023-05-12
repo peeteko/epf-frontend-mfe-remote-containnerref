@@ -1,6 +1,7 @@
 import { Component, HostListener,  OnInit, Input } from '@angular/core';
 import { Connection, ConnectionState, PlatformDomainText } from '../plugins-models/plugins.model';
 import { PluginService } from '../services/plugin-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class PluginConnectionsComponent implements OnInit {
   public connectionsList : Connection[] = [];
   public isMobile: boolean = false;
 
-  constructor (private readonly pluginService : PluginService){}
+  constructor (private readonly pluginService : PluginService, public route : ActivatedRoute){}
 
   ngOnInit(): void {
     if (this.jwtTokenCurrentValue){
@@ -29,7 +30,20 @@ export class PluginConnectionsComponent implements OnInit {
       this.pluginService.getConnectionsList(this.jwtTokenCurrentValue).subscribe((data) => {this.connectionsList = data});
     }
     else{
-      console.error('with jwtToken no access to connections list');
+      this.route.queryParams
+        .subscribe(params => {
+        console.log(params); 
+
+        this.jwtTokenCurrentValue = params['jwt-token'];
+        console.log(this.jwtTokenCurrentValue);
+        if (this.jwtTokenCurrentValue){
+          this.pluginService.getConnectionsList(this.jwtTokenCurrentValue).subscribe((data) => {this.connectionsList = data});
+        }
+        else{
+          console.error('without jwtToken no access to connections list');
+        }
+      }
+    );
     }
   }
 
